@@ -21,7 +21,8 @@ Pour utiliser l'outil localement, télécharger la dernière version disponible 
 
 ## Contribuer
 Vous pouvez soumettre des suggestions et signaler des problèmes cette [page](https://github.com/Serrulien/hemicycle-france/issues). Lors du signalement de problème, nous vous invitons à respecter les consignes énoncées dans le chapite [Signaler un problème](#signaler-un-problème).  
-Si vous ne voulez pas utiliser la plateforme Github, vous pouvez envoyez votre message à [contact@julienserrurier.fr](mailto:contact@julienserrurier.fr?subject=[GitHub]%20hemicycle%20france).
+Si vous ne voulez pas utiliser la plateforme Github, vous pouvez envoyez votre message à [contact@julienserrurier.fr](mailto:contact@julienserrurier.fr?subject=[GitHub]%20hemicycle%20france).  
+Pour les contributions de code, merci de respecter ce format de commit https://gist.github.com/abravalheri/34aeb7b18d61392251a2.
 
 ## Signaler un problème
 Indiquez :

@@ -7,7 +7,9 @@
     "test": "jest --coverage",
     "lint": "eslint js/*.js js/**/*.js",
     "build-prod": "npm run lint && browserify js/main.js -t browserify-versionify | uglifyjs --compress --mangle --ecma 6 --output docs/assets/bundle.js",
-    "build-dev": "npm run lint && browserify --debug js/main.js -o docs/assets/bundle.js -t browserify-versionify"
+    "build-dev": "npm run lint && browserify --debug js/main.js -o docs/assets/bundle.js -t browserify-versionify",
+    "build-release-zip": "cd docs && zip ../hemicycle-france-v$npm_package_version.zip ../lisezmoi.txt principale.html aide-utilisation.html assets/*",
+    "build-release-targz": "cd docs && tar -czvf hemicycle-france-v$npm_package_version.tar.gz ../lisezmoi.txt principale.html aide-utilisation.html assets/* && mv hemicycle-france-v$npm_package_version.tar.gz ../"
   },
   "repository": {
     "type": "git",

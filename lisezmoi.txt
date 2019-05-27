@@ -1,0 +1,57 @@
+Ce fichier accompagne la version locale de l'outil.
+
+# Description
+    hemicycle-france est une application web permettant de produire des visuels représentant l'hémicycle de l’Assemblée nationale. Vous pouvez colorier chaque siège après importation de votre fichier de données (format CSV) et d'une éventuelle palette de couleur. De plus, il est possible d'exporter le visuel en fichier SVG, vous permettant d'effectuer des retouches avec aisance.
+    Chacun des 582 sièges disponibles aux députés peut être colorié en fonction de sa valeur. Ces valeurs sont définies dans le fichier de données et les couleurs sont définies dans la palette. Cependant, si aucune palette n'est renseignée alors les couleurs sont choisies aléatoirement.
+
+    L'outil représente les données catégorielles ou numériques. Typiquement les données dites catégorielles peuvent être le sexe des députés et les données numériques le nombre d'amendements proprosés.
+
+    Pour utiliser l'outil, ouvrez "principale.html" avec votre navigateur web. Cet outil est également utilisable en ligne sur https://serrulien.github.io/hemicycle-france/principale.html. 
+    Les fichiers importés doivent respecter un format particulier, nous vous recommendons de lire le manuel d'utilisation dans le fichier "aide-utilisation". Il est également disponible sur https://serrulien.github.io/hemicycle-france/aide-utilisation.html.
+
+# Conditions d'usage
+    Cet outil supporte les navigateurs Web récents dits "evergreen browsers" (Firefox, Chrome, Edge, Opera et Safari). Le support est focalisé sur les plateformes Desktop au lieu des plateformes mobiles et tablettes.
+
+# Télécharger la dernière version
+    https://github.com/Serrulien/hemicycle-france/releases.
+
+# Contribuer
+    Vous pouvez soumettre des suggestions et signaler des problèmes sur https://github.com/Serrulien/hemicycle-france/issues. Lors du signalement de problème, nous vous invitons à respecter les consignes énoncées dans le chapite Signaler un problème.  
+    Si vous ne voulez pas utiliser la plateforme Github, vous pouvez envoyez votre message à contact@julienserrurier.fr avec comme début de sujet "[GitHub] hemicycle france".
+
+# Signaler un problème
+    Indiquez :
+    - votre navigateur et sa version
+    - une description exhaustive du problème. Un message d'erreur est-il affiché ?
+    - si possible une capture d'écran
+    - le problème est-il reproductible ? Si oui comment le reproduire ?
+    - si le problème est directement lié à une des fichiers importés, merci de joindre les fichiers (de préférence un fichier de contenu minimal).
+
+# Où puis-je trouver les suggestions et problèmes connus ?
+    https://github.com/Serrulien/hemicycle-france/issues.
+
+# Licence
+    Ce projet est licencié sous la licence MIT :
+
+        Copyright (c) 2019 Julien SERRURIER
+
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+
+# répertoire du code source
+    https://github.com/Serrulien/hemicycle-france.

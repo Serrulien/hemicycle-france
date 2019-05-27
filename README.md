@@ -1,5 +1,7 @@
 # hemicycle-france
 
+[![Build Status](https://travis-ci.org/Serrulien/hemicycle-france.svg?branch=master)](https://travis-ci.org/Serrulien/hemicycle-france)
+
 [hemicycle-france][hemicycle-france-online] est une application web permettant de produire des visuels représentant l'hémicycle de l’Assemblée nationale. Vous pouvez colorier chaque siège après importation de votre fichier de données (format CSV) et d'une éventuelle palette de couleur. De plus, il est possible d'exporter le visuel en fichier SVG, vous permettant d'effectuer des retouches avec aisance.
 
 Chacun des 582 sièges disponibles aux députés peut être colorié en fonction de sa valeur. Ces valeurs sont définies dans le fichier de données et les couleurs sont définies dans la palette. Cependant, si aucune palette n'est renseignée alors les couleurs sont choisies aléatoirement.

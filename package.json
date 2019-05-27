@@ -1,0 +1,39 @@
+{
+  "name": "hemicycle-france",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "lint": "eslint js/*.js js/**/*.js",
+    "build-prod": "npm run lint && browserify js/main.js -t browserify-versionify | uglifyjs --compress --mangle --ecma 6 --output docs/assets/bundle.js",
+    "build-dev": "npm run lint && browserify --debug js/main.js -o docs/assets/bundle.js -t browserify-versionify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Serrulien/hemicycle-france.git"
+  },
+  "author": "Julien SERRURIER",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^16.2.3",
+    "browserify-versionify": "^1.0.6",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsdoc": "^4.8.3",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.3.1",
+    "jsdom": "^15.1.0",
+    "uglify-es": "^3.3.9"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "papaparse": "^4.6.3",
+    "raphael": "^2.2.7",
+    "tinycolor2": "^1.4.1",
+    "tinygradient": "^1.0.0"
+  }
+}

@@ -1,0 +1,105 @@
+:root {
+  --hauteur-coloris: 1em;
+}
+
+#formulaireData {
+  background-color: lightblue;
+}
+
+#formulairePalette {
+  background-color: lightsalmon;
+}
+
+#formulaireLegende {
+  background-color: lightgreen;
+}
+
+#hemicycle {
+  width: 850px;
+}
+
+#legende {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#legende.vertical {
+  flex-direction: column;
+}
+
+#legende.horizontal {
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: start;
+  justify-content: space-evenly;
+}
+
+.association {
+  margin-bottom: 1em;
+}
+
+.association .signification {
+  word-break: break-word;
+}
+
+
+
+/* DEBUT LEGENDE CATEGORIE */
+#legende.categorie .association {
+  display: flex;
+}
+
+#legende.categorie .association .couleur {
+  width: var(--hauteur-coloris);
+  height: var(--hauteur-coloris);
+  margin-right: var(--hauteur-coloris);
+  flex-shrink: 0;
+}
+/* FIN LEGENDE CATEGORIE */
+
+
+
+/* DEBUT LEGENDE NUMERIQUE */
+#legende.numerique .association {
+  display: grid;
+  
+  grid-template-columns: auto 3em auto auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    ". degrade . . signification"
+    "inf . sup . signification";
+  justify-content: start;
+}
+
+#legende.numerique .association .degrade {
+  grid-area: degrade;
+  height: var(--hauteur-coloris);
+  align-self: center;
+}
+
+#legende.numerique .association .borne {
+  font-size: 0.8em;
+  width: 4em;
+  word-wrap: break-word;
+  align-self: start;
+}
+
+#legende.numerique .association .borne:nth-of-type(1) {
+  grid-area: inf;
+  position: relative;
+  right: -1ch;
+  text-align: right;
+}
+
+#legende.numerique .association .borne:nth-of-type(2) {
+  grid-area: sup;
+  position: relative;
+  left: -1ch;
+  align-self: start;
+}
+
+#legende.numerique .association .signification {
+  grid-area: signification;
+  align-self: start;
+}
+/* FIN LEGENDE NUMERIQUE */

@@ -80,11 +80,11 @@ describe('creerLegende', () => {
 	
 			expect(associations[0].querySelectorAll('.couleur')).toHaveLength(1);
 			expect(associations[0].querySelectorAll('.signification')).toHaveLength(1);
-			expect(associations[0].querySelector('.signification').innerText).toBe('catégorie n°1');
+			expect(associations[0].querySelector('.signification').innerText).toBe('LREM');
 	
 			expect(associations[1].querySelectorAll('.couleur')).toHaveLength(1);
 			expect(associations[1].querySelectorAll('.signification')).toHaveLength(1);
-			expect(associations[1].querySelector('.signification').innerText).toBe('catégorie n°2');
+			expect(associations[1].querySelector('.signification').innerText).toBe('RPU');
 
 			expect(window.getComputedStyle(associations[0].querySelector('.couleur')).backgroundColor).not.toBe(window.getComputedStyle(associations[1].querySelector('.couleur')).backgroundColor);
 		});

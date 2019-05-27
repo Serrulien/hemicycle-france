@@ -14,7 +14,7 @@ Cet outil est utilisable en ligne sur https://serrulien.github.io/hemicycle-fran
 Les fichiers importés doivent respecter un format particulier, nous vous recommendons de lire le manuel d'utilisation disponible sur https://serrulien.github.io/hemicycle-france/aide-utilisation.html.
 
 ## Conditions d'usage
-Cet outil supporte les navigateurs Web récents dits "evergreen browsers" (Firefox, Chrome, Edge et Opera). Le support est focalisé sur les plateformes Desktop au lieu des plateformes mobiles et tablettes.
+Cet outil supporte les navigateurs Web récents dits "evergreen browsers" (Firefox, Chrome, Edge, Opera et Safari). Le support est focalisé sur les plateformes Desktop au lieu des plateformes mobiles et tablettes.
 
 ## Utiliser l'outil localement
 Pour utiliser l'outil localement, télécharger la dernière version disponible sur https://github.com/Serrulien/hemicycle-france/releases. Décompressez l'archive puis ouvrez le fichier .html avec votre navigateur web.

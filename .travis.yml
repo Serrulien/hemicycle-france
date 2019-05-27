@@ -1,0 +1,24 @@
+sudo: false
+
+language: node_js
+
+node_js:
+- lts/dubnium
+
+branches:
+  only:
+  - /.*/
+
+cache:
+  directories:
+  - node_modules
+
+before_install:
+- npm update
+
+install:
+- npm install
+
+script:
+- npm run lint
+- npm run test

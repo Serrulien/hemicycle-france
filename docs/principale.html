@@ -52,7 +52,7 @@ SOFTWARE.
 <article>	
 	<button id="export">exporter en SVG</button>
 
-	<form id="formulaireData">
+	<form id="formulaireDataImport">
 		<input type="file" name="fichierData" required/>
 
 		<br>
@@ -60,27 +60,7 @@ SOFTWARE.
 		<label for="dataOptionEntete">en-tête</label>
 		<input type="checkbox" id="dataOptionEntete" name="entete" checked>
 
-		<br>
-		
-		<label for="dataColonneSiege">colonne numéro siège</label>
-		<input type="number" id="dataColonneSiege" min="1" required value="1" />
-
-		<br>
-
-		<label for="dataColonne">colonne data</label>
-		<input type="number" id="dataColonne" min="1" required value="2" />
-
-		<br>
-
-		<label for="dataType">type de donnée</label>
-		<select id="dataType" required>
-			<option value="categorie">catégorie</option>
-			<option value="numerique">numérique</option>
-		</select>
-
-		<br>
-
-		<button type="submit">lire</button>
+		<button type="submit">Importer</button>
 
 		<fieldset>
 			<legend>options avancées CSV</legend>
@@ -109,6 +89,29 @@ SOFTWARE.
 			<label for="dataOptionFichierEchappement">caractère d'échappement de citation</label>
 			<input type="text" id="dataOptionFichierEchappement" value="&quot;" size="1" required minlength="1" maxlength="1"/>
 		</fieldset>
+	</form>
+
+	<form id="formulaireData">
+		<label for="dataColonneSiege">colonne numéro siège</label>
+		<select id="dataColonneSiege" required></select>
+
+		<br>
+
+		<label for="dataColonne">colonne data</label>
+		<select id="dataColonne" required></select>
+
+		<br>
+
+		<label for="dataType">type de donnée</label>
+		<select id="dataType" required>
+			<option value="categorie">catégorie</option>
+			<option value="numerique">numérique</option>
+		</select>
+
+		<br>
+
+		<button type="submit" disabled>Injecter</button>
+
 	</form>
 
 	<div id="dataLog"></div>

@@ -263,6 +263,84 @@ document.getElementById("export").addEventListener('click', function() {
 
 window.addEventListener("load", function()
 {
+
+	document.getElementById('formulaireDataImport').addEventListener('submit', function(ev){
+		ev.preventDefault();
+
+		/*
+		On va lire la première ligne du fichier CSV de façon à savoir quoi mettre dans les selects permettant de choisir les colonnes
+		Si le fichier a un entête, alors on affichere le nom des colonnes sinon le numéro des colonnes
+		*/
+
+		const fichier = ev.target.querySelector("input[name=fichierData]").files[0];
+		const fichierAEntete = ev.target.querySelector("#dataOptionEntete").checked;
+
+		internals.core.lectureCSV(
+			fichier,
+			{
+				delimiter: ev.target.querySelector("#dataOptionFichierDelimiteur").disabled ? "" : ev.target.querySelector("#dataOptionFichierDelimiteur").value,
+				newline: ev.target.querySelector("#dataOptionFichierSautLigne").disabled ? "" : ev.target.querySelector("#dataOptionFichierSautLigne").value,
+				quoteChar: ev.target.querySelector("#dataOptionFichierQuoteChar").value,
+				escapeChar: ev.target.querySelector("#dataOptionFichierEchappement").value,
+				header: false,
+				transformHeader: undefined,
+				dynamicTyping: false,
+				preview: 1,
+				encoding: "",
+				comments: false,
+				skipEmptyLines: true, // skip les lignes vides, comme par ex si le fichier se termine par une ligne vide
+				delimitersToGuess: [',', '\t', '|', ';', Papa.RECORD_SEP, Papa.UNIT_SEP]
+			})
+		// eslint-disable-next-line no-unused-vars
+		.then(function({data, errors, meta}){
+			loggerData.reset();
+
+			if(errors && errors.length > 0)
+			{
+				throw errors;
+			}
+			return data;
+		})
+		.catch(function(errors){
+			document.querySelectorAll('#formulaireData button, #formulaireData input[type=file]').forEach(el => el.disabled = true);
+			errors.forEach(function(error){
+				loggerData.erreur(internals.logging.humanizeErreurPapaparse(error));
+			})
+			loggerData.info(internals.logging.interruptionImportDonnees());
+			return;
+		})
+		.then(function(data){
+			if(!data)
+				return;
+
+			const nbColonne = data[0].length;
+			loggerData.info(internals.logging.nombreColonneLu(nbColonne));
+
+			const selects = [document.getElementById('dataColonneSiege'), document.getElementById('dataColonne')];
+			selects.forEach(function(select){
+				select.options.length = 0;
+			});
+			
+			const nomsColonnes = (fichierAEntete) ? data[0] : _.range(1, nbColonne+1);
+			nomsColonnes.forEach(function(colonne){
+				const option = document.createElement("option");
+				option.value = colonne;
+				option.text = colonne;
+				selects.forEach(x => x.add(option.cloneNode(true)));
+			});
+
+			selects.forEach(x => x.selectedIndex = 0);
+
+			document.querySelectorAll('#formulaireData button, #formulaireData input[type=file]').forEach(el => el.disabled = false);
+		})
+		.catch(function(err){
+			document.querySelectorAll('#formulaireData button, #formulaireData input[type=file]').forEach(el => el.disabled = true);
+			loggerData.erreur(internals.logging.interruptionImportDonnees() + " Une erreur inconnue est survenue.");
+			loggerData.debug('un throw catché, voir console');
+			console.error(err);
+		});
+	});	
+
 	[
 		"dataOptionFichierDelimiteurAuto",
 		"dataOptionFichierSautLigneAuto",
@@ -393,19 +471,17 @@ window.addEventListener("load", function()
 			donnees = {};
 			loggerData.reset();
 
-			const fichier = ev.target.querySelector("input[name=fichierData]").files[0];
-
-			const fichierAEntete = ev.target.querySelector("#dataOptionEntete").checked;
-
+			const fichier = document.querySelector("#formulaireDataImport input[name=fichierData]").files[0];
+			const fichierAEntete = document.getElementById("dataOptionEntete").checked;
 			const typeData = ev.target.querySelector("#dataType").value;
 
 			internals.core.lectureCSV(
 				fichier,
 				{
-					delimiter: ev.target.querySelector("#dataOptionFichierDelimiteur").disabled ? "" : ev.target.querySelector("#dataOptionFichierDelimiteur").value,
-					newline: ev.target.querySelector("#dataOptionFichierSautLigne").disabled ? "" : ev.target.querySelector("#dataOptionFichierSautLigne").value,
-					quoteChar: ev.target.querySelector("#dataOptionFichierQuoteChar").value,
-					escapeChar: ev.target.querySelector("#dataOptionFichierEchappement").value,
+					delimiter: document.getElementById("dataOptionFichierDelimiteur").disabled ? "" : document.getElementById("dataOptionFichierDelimiteur").value,
+					newline: document.getElementById("dataOptionFichierSautLigne").disabled ? "" : document.getElementById("#dataOptionFichierSautLigne").value,
+					quoteChar: document.getElementById("dataOptionFichierQuoteChar").value,
+					escapeChar: document.getElementById("dataOptionFichierEchappement").value,
 					header: fichierAEntete,
 					transformHeader: undefined,
 					dynamicTyping: false,
@@ -415,9 +491,10 @@ window.addEventListener("load", function()
 					skipEmptyLines: true, // skip les lignes vides, comme par ex si le fichier se termine par une ligne vide
 					delimitersToGuess: [',', '\t', '|', ';', Papa.RECORD_SEP, Papa.UNIT_SEP]
 				})
+			// eslint-disable-next-line no-unused-vars
 			.then(function({data, errors, meta}){
-					const indexColonneSiege = parseInt(ev.target.querySelector("#dataColonneSiege").value) - 1;
-					const indexColonneData = parseInt(ev.target.querySelector("#dataColonne").value) - 1;
+					const selectionColonneSiege = (fichierAEntete) ? ev.target.querySelector("#dataColonneSiege").value : parseInt(ev.target.querySelector("#dataColonneSiege").value) - 1;
+					const selectionColonneData = (fichierAEntete) ? ev.target.querySelector("#dataColonne").value : parseInt(ev.target.querySelector("#dataColonne").value) - 1;
 
 					if(errors && errors.length)
 					{
@@ -431,36 +508,7 @@ window.addEventListener("load", function()
 					/**
 					 * Contient le contenu parsé du fichier data. undefined si aucune données valides
 					 */
-					let donneesBrut = undefined;
-
-					if(fichierAEntete)
-					{
-						// bug quand les index pas meta.fields, va partir avec la prélecture du fichier
-						const nomColData = meta.fields[indexColonneData];
-						const nomColSiege = meta.fields[indexColonneSiege];
-
-						if(nomColData == null || nomColSiege == null)
-						{
-							if(nomColData == null)
-							{
-								loggerData.erreur("La colonne n°" + nomColData + " n'est pas présente dans l'en-tête.");
-							}
-							if(nomColSiege == null)
-							{
-								loggerData.erreur("La colonne n°" + nomColSiege + " n'est pas présente dans l'en-tête.");
-							}
-							loggerData.info(internals.logging.interruptionImportDonnees());
-							return;
-						}
-
-						donneesBrut = internals.core.extraireColonnesCSV(data, [nomColData, nomColSiege]);
-					}
-					else
-					{
-						donneesBrut = internals.core.extraireColonnesCSV(data, [indexColonneData, indexColonneSiege]);
-					}
-
-
+					let donneesBrut = internals.core.extraireColonnesCSV(data, [selectionColonneData, selectionColonneSiege]);
 
 					// GESTION ERREUR LORS DE L'EXTRACTION DES COLONNES
 					{

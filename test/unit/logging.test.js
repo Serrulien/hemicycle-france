@@ -81,3 +81,11 @@ test('borneSupInferieureABorneInf', () => {
         '" doit être strictement inférieure à celle de la colonne "' + internals.constants.HEADER_PALETTE.NUMERIQUE.BORNE_INF +
         '" à la ligne n°2.');
 });
+
+test('nombreColonneLu ', () => {
+    const fn = internals.logging.nombreColonneLu;
+
+    expect(fn(0)).toBe('Aucune colonne lue.');
+    expect(fn(1)).toBe('1 colonne lue.');
+    expect(fn(2)).toBe('2 colonnes lues.');
+});

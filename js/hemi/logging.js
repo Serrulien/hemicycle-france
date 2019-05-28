@@ -201,3 +201,19 @@ function couleurInvalideDegradeFin(numeroLigne, couleur)
     return 'La couleur de fin du dégradé valant "' + couleur + '" n\'est pas valide à la ligne n°' + (numeroLigne+1) + '.'
 }
 module.exports.couleurInvalideDegradeFin = couleurInvalideDegradeFin;
+
+function nombreColonneLu(nbColonne) {
+	let mess;
+	switch (nbColonne) {
+		case 0:
+			mess = 'Aucune colonne lue.';
+			break;
+		case 1:
+			mess = '1 colonne lue.';
+			break;
+		default:
+			mess = nbColonne + ' colonnes lues.';
+	}
+	return mess;
+}
+module.exports.nombreColonneLu = nombreColonneLu;

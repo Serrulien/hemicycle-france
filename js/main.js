@@ -630,8 +630,8 @@ window.addEventListener("load", function()
 
 					jointureDataPalette();
 			}).catch(function(err){
-				loggerPalette.erreur(internals.logging.interruptionImportPalette() + " Une erreur inconnue est survenue.");
-				loggerPalette.debug('un throw catché, voir console');
+				loggerData.erreur(internals.logging.interruptionImportPalette() + " Une erreur inconnue est survenue.");
+				loggerData.debug('un throw catché, voir console');
 				console.error(err);
 			});
 		} catch (error) {

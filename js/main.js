@@ -817,7 +817,7 @@ window.addEventListener("load", function()
 								couleur = element.degrade.coulDepart();
 								break;
 							case internals.constants.TYPE_DONNEE.CATEGORIE:
-								couleur = element.degrade.couleur();
+								couleur = element.couleur();
 								break;
 							default:
 								throw new Error("typeData inconnu");

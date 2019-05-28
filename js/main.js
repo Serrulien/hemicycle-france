@@ -334,15 +334,6 @@ window.addEventListener("load", function()
 		}
 	}
 	
-	document.querySelector("#couleurAlea").addEventListener("click", function () {
-		for(let cle in tracesHemicycle){
-			if(cle.match(/^s[0-9]/)){
-				let couleur = internals.core.couleurAleatoire();
-				tracesHemicycle[cle].couleur = couleur;
-				tracesHemicycle[cle].attr({fill: couleur, stroke: couleur});
-			}
-		}
-	});
 
 	function jointureDataPalette()
 	{

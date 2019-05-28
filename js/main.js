@@ -590,6 +590,10 @@ window.addEventListener("load", function()
 					console.info(donnees);
 
 					jointureDataPalette();
+			}).catch(function(err){
+				loggerPalette.erreur(internals.logging.interruptionImportPalette() + " Une erreur inconnue est survenue.");
+				loggerPalette.debug('un throw catché, voir console');
+				console.error(err);
 			});
 		} catch (error) {
 			loggerData.erreur(internals.logging.interruptionImportDonnees() + " Une erreur inconnue est survenue.");
@@ -937,6 +941,10 @@ window.addEventListener("load", function()
 				loggerPalette.info(internals.logging.nombreLigneExploitable(palette.data.length));
 
 				jointureDataPalette();
+			}).catch(function(err){
+				loggerPalette.erreur(internals.logging.interruptionImportPalette() + " Une erreur inconnue est survenue.");
+				loggerPalette.debug('un throw catché, voir console');
+				console.error(err);
 			});
 		} catch ( error ) {
 			loggerPalette.erreur(internals.logging.interruptionImportPalette() + " Une erreur inconnue est survenue.");

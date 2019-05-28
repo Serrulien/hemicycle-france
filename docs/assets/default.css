@@ -2,8 +2,37 @@
   --hauteur-coloris: 1em;
 }
 
-#formulaireData {
+header {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+#formulaireData, #formulaireDataImport {
   background-color: lightblue;
+}
+
+fieldset {
+  margin-top: 10px;
+}
+
+#dataLog li.err:before, #paletteLog li.err:before {
+  content: 'erreur: ';
+  color: red;
+}
+
+#dataLog li.err:warn, #paletteLog li.err:warn {
+  content: 'warning: ';
+  color: #f4bf42;
+}
+
+#dataLog li.err:debug, #paletteLog li.err:debug {
+  content: 'debug: ';
+}
+
+#formulaireDataImport {
+  padding-bottom: 10px;
 }
 
 #formulairePalette {
@@ -14,7 +43,18 @@
   background-color: lightgreen;
 }
 
+fieldset :not(:first-child) {
+  display: none;
+}
+
+input[type=checkbox] + button, input[type=file] + label {
+  margin-left: 30px;
+}
+
+
+
 #hemicycle {
+  margin-top: 10px;
   width: 850px;
 }
 

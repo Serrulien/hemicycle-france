@@ -46,16 +46,13 @@ SOFTWARE.
 
 <header>
 	<a href="./aide-utilisation.html" hreflang="fr">manuel d'utilisation</a>
+	<button id="export">exporter en SVG</button>
 	<a href="https://github.com/Serrulien/hemicycle-france">GitHub</a>
 </header>
 
 <article>	
-	<button id="export">exporter en SVG</button>
-
 	<form id="formulaireDataImport">
 		<input type="file" name="fichierData" required/>
-
-		<br>
 
 		<label for="dataOptionEntete">en-tête</label>
 		<input type="checkbox" id="dataOptionEntete" name="entete" checked>
@@ -63,12 +60,13 @@ SOFTWARE.
 		<button type="submit">Importer</button>
 
 		<fieldset>
-				<legend>options avancées CSV</legend>
+				<legend>options avancées CSV <a href="">Ouvrir</a></legend>
 	
 				<label for="dataOptionFichierDelimiteur">séparateur de colonne</label>
 				<input type="text" id="dataOptionFichierDelimiteur" value="&semi;" disabled size="1" required minlength="1" maxlength="1"/>
-				<input id="dataOptionFichierDelimiteurAuto" checked data-switch="dataOptionFichierDelimiteur" type="checkbox">détection automatique</input>
-	
+				<input id="dataOptionFichierDelimiteurAuto" checked data-switch="dataOptionFichierDelimiteur" type="checkbox"/>
+				<label for="dataOptionFichierDelimiteurAuto">détection automatique</label>
+
 				<br>
 	
 				<label for="dataOptionFichierSautLigne">séparateur de ligne</label>
@@ -77,15 +75,16 @@ SOFTWARE.
 					<option value="&#13;">\r</option>
 					<option value="&#13;&#10;">\r\n</option>
 				</select>
-				<input id="dataOptionFichierSautLigneAuto" checked data-switch="dataOptionFichierSautLigne" type="checkbox">détection automatique</input>
+				<input id="dataOptionFichierSautLigneAuto" checked data-switch="dataOptionFichierSautLigne" type="checkbox"/>
+				<label for="dataOptionFichierSautLigneAuto">détection automatique</label>
 	
 				<br>
-	
+
 				<label for="dataOptionFichierQuoteChar">caractère de citation</label>
 				<input type="text" id="dataOptionFichierQuoteChar" value="&quot;" size="1" required minlength="1" maxlength="1"/>
-		
+
 				<br>
-		
+
 				<label for="dataOptionFichierEchappement">caractère d'échappement de citation</label>
 				<input type="text" id="dataOptionFichierEchappement" value="&quot;" size="1" required minlength="1" maxlength="1"/>
 			</fieldset>
@@ -125,11 +124,12 @@ SOFTWARE.
 		<button type="submit">Injecter</button>
 
 		<fieldset>
-			<legend>options avancées CSV</legend>
+			<legend>options avancées CSV <a href="">Ouvrir</a></legend>
 
 			<label for="paletteOptionFichierDelimiteur">séparateur de colonne</label>
 			<input type="text" id="paletteOptionFichierDelimiteur" value="&semi;" disabled size="1" required minlength="1" maxlength="1"/>
-			<input id="paletteOptionFichierDelimiteurAuto" checked data-switch="paletteOptionFichierDelimiteur" type="checkbox">détection automatique</input>
+			<input id="paletteOptionFichierDelimiteurAuto" checked data-switch="paletteOptionFichierDelimiteur" type="checkbox"/>
+			<label for="paletteOptionFichierDelimiteurAuto">détection automatique</label>
 
 			<br>
 
@@ -139,7 +139,9 @@ SOFTWARE.
 				<option value="&#13;">\r</option>
 				<option value="&#13;&#10;">\r\n</option>
 			</select>
-			<input id="paletteOptionFichierSautLigneAuto" checked data-switch="paletteOptionFichierSautLigne" type="checkbox">détection automatique</input>
+			<input id="paletteOptionFichierSautLigneAuto" checked data-switch="paletteOptionFichierSautLigne" type="checkbox"/>
+			<label for="paletteOptionFichierSautLigneAuto">détection automatique</label>
+
 
 			<br>
 

@@ -87,6 +87,27 @@ document.getElementById('formulaireLegende').addEventListener('change', function
 	legende.classList.add(ev.target.value);
 });
 
+document.querySelectorAll('fieldset legend a').forEach(function(element){
+
+	element.addEventListener('click', function(ev){
+		ev.preventDefault();
+		if(element.textContent === "Ouvrir")
+		{
+			element.parentElement.parentElement.querySelectorAll(':not(:first-child)').forEach(function(child){
+				child.style.display = 'initial';
+			});
+			element.textContent = 'Fermer';
+		}
+		else
+		{
+			element.parentElement.parentElement.querySelectorAll(':not(:first-child)').forEach(function(child){
+				child.style.display = 'none';
+			});
+			element.textContent = 'Ouvrir';
+		}
+	})
+});
+
 
 document.getElementById("export").addEventListener('click', function() {
 	hemicycle.setStart();

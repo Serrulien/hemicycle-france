@@ -626,8 +626,6 @@ window.addEventListener("load", function()
 
 					loggerData.info(internals.logging.nombreLigneExploitable(donnees.data.length));
 
-					console.info(donnees);
-
 					jointureDataPalette();
 			}).catch(function(err){
 				loggerData.erreur(internals.logging.interruptionImportPalette() + " Une erreur inconnue est survenue.");

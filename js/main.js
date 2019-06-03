@@ -396,7 +396,6 @@ window.addEventListener("load", function()
 		// en effet, les clés ne respectant pas sont par exemple commissions, enceinte ..
 		if (objKey.match(/^s[0-9]/))
 		{
-			svg.attr({title: "place n° " + objKey.substr(1)});
 			internals.core.aper(svg, "place n° " + svg.data("num"));
 		}
 		else

@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 /**
  * Contient divers fonctions d'utilité générale à l'application.
@@ -739,9 +739,7 @@ module.exports.dessinerHemicycle = dessinerHemicycle;
  */
 function aper(obj, content)
 {
-	// title vide pour éviter d'afficher le tooltip natif si l'attribut title n'est pas vide
-	obj.attr({"title": ""})
-	obj.data({"message": content});
+	obj.attr({title: content})
 	if(Raphael.type == "SVG"){
 		obj.tooltip(obj.data("message"));
 	}

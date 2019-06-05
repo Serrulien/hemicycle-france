@@ -62,6 +62,41 @@ function createTip()
 	this.tp.paper = this.paper.setFinish();
 }
 
+function onMouseMove(event)
+{
+	const svg = this.paper.canvas;
+
+	// pos du curseur au sein du svg
+	let posCursorX = event.clientX  - svg.getBoundingClientRect().left;
+	let posCursorY = event.clientY  - svg.getBoundingClientRect().top;
+
+	// le bord gauche du tooltip est centré sous le curseur
+	// +28 en Y pour que le tooltip ne soit pas caché par le curseur
+	// limitation : si le bord du svg est trop proche du curseur, alors le tooltip sera coupé en deux.
+
+	// impossible que le tooltip soit coupé par la gauche de part sa position sous le curseur.
+	// même chose pour le haut du tooltip
+	// il peut donc être coupé par le bas ou la droite
+	const svgVB = svg.viewBox.baseVal;
+	const tooltipBBox = this.tp.paper.getBBox();
+
+	const ecartVerticalCurseurTooltip = 28;
+
+	const diffX = posCursorX + tooltipBBox.width - (svgVB.x + svgVB.width);
+	const diffY = posCursorY + tooltipBBox.height - (svgVB.y + svgVB.height) + ecartVerticalCurseurTooltip;
+	if (diffX > 0)
+		posCursorX -= diffX;
+	if (diffY > 0)
+		posCursorY -= diffY;
+
+	// on ne vérifie pas si un premier décalage résulte en un une position valide (typiquement un svg avec width faible)
+	// si le tooltip est coupé en bas, il est possible qu'il soit derrière le curseur.
+
+	const trans = 't' + (posCursorX) + ',' + (posCursorY + ecartVerticalCurseurTooltip); // format particulier https://dmitrybaranovskiy.github.io/raphael/reference.html#Element.transform
+	this.tp.paper.transform(trans);
+	this.tp.paper.toFront();
+}
+
 function onMouseIn(textContent)
 {
 	if (!this.tp) {
@@ -92,7 +127,7 @@ Raphael.el.tooltip = function(textContent) {
 		mousein: onMouseIn.bind(this, textContent),
 		mouseout: onMouseOut.bind(this)
 	};
-
+	
 	this.hover(
 		this.tpHandles.mousein,
 		this.tpHandles.mouseout

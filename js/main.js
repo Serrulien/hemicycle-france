@@ -395,9 +395,7 @@ window.addEventListener("load", function()
 		// si la clé désigne une valeur devant être un élément raphael associé à une place d'un député
 		// en effet, les clés ne respectant pas sont par exemple commissions, enceinte ..
 		if (objKey.match(/^s[0-9]/))
-		{
-			internals.core.aper(svg, "place n° " + svg.data("num"));
-		}
+			internals.core.aper(svg, "place n°" + svg.data("num"));
 		else
 		{
 			internals.core.aper(svg, svg.data("nom"));
@@ -421,7 +419,7 @@ window.addEventListener("load", function()
 			{
 				if (objKey.match(/^s[0-9]/)) // si du bon format, càd si l'élément est une place
 				{
-					this.attr({title: "place n° " + this.data("num")}); // on remet le contenu de l'élément fils <title> par soucis d'accessibilité
+				this.attr({title: "place n°" + this.data("num")}); // on remet le contenu de l'élément fils <title> par soucis d'accessibilité
 					this.animate({fill: this.couleur, stroke: internals.constants.VISUEL.COULEUR.SECONDAIRE}, 300); // couleur originale, état de veille	
 				}
 				else

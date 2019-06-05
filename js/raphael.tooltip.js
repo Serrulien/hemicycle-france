@@ -46,7 +46,7 @@ function createTip()
 	this.paper.setStart();
 
 	// Create background
-	const frameEl = this.paper.rect(0.5, 0.5, 0, 0, 5);
+	const frameEl = this.paper.rect(0, 0, 0, 0, 5);
 
 	// Create text element
 	const textEl = this.paper.text(5, 0, this.tp.message).attr({'text-anchor':'start', 'font-size':11});

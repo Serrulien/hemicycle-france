@@ -62,6 +62,20 @@ function createTip()
 	this.tp.paper = this.paper.setFinish();
 }
 
+function onMouseIn(textContent)
+{
+	if (!this.tp) {
+		initTooltip.call(this, textContent);
+		this.mousemove(onMouseMove);
+	}
+	createTip.call(this);
+}
+
+function onMouseOut()
+{
+	deleteTooltip.call(this);
+}
+
 /**
  * @public
  * 
@@ -74,40 +88,21 @@ function createTip()
  * el.tooltip("mon texte");
  */
 Raphael.el.tooltip = function(textContent) {
-
-	this.mousemove(function(event) {
-		if ( event.pageX == null && event.clientX != null ) {
-			event.pageX = event.clientX + (event && event.scrollLeft || document.body.scrollLeft || 0);
-			event.pageY = event.clientY + (event && event.scrollTop || document.body.scrollTop || 0);
-		}
-
-		let dif = -250;
-		if(this.getBBox().x < 420)
-		{
-			dif = 70;
-		}
-
-		let hemicycle = document.getElementById("hemicycle");
-		let offsetLeft = hemicycle.offsetLeft;
-		let offsetTop = hemicycle.offsetTop;
-
-		let trans = '"T' + (event.pageX + dif - offsetLeft) + ',' + (event.pageY - offsetTop) + '"';
-
-		this.tp.paper.transform(trans);
-		this.tp.paper.toFront();
-	});
+	this.tpHandles = {
+		mousein: onMouseIn.bind(this, textContent),
+		mouseout: onMouseOut.bind(this)
+	};
 
 	this.hover(
-		function(){ // mousein
-			if (!this.tp) {
-				initTooltip.call(this, textContent);
-			}
-			createTip.call(this);
-		},
-		function(){ // mouseout
-			deleteTooltip.call(this);
-		}
+		this.tpHandles.mousein,
+		this.tpHandles.mouseout
 	);
 
 	return this;
-}
+};
+
+Raphael.el.removeTooltip = function() {
+	this.unmousemove(onMouseMove);
+	this.unhover(this.tpHandles.mousein, this.tpHandles.mouseout);
+	delete this.tpHandles;
+};

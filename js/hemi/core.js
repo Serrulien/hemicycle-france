@@ -728,8 +728,8 @@ function dessinerHemicycle(conteneur)
 module.exports.dessinerHemicycle = dessinerHemicycle;
 
 /**
- * @description Créer un tooltip au survol de la place affichant le nom du député occupant cette dernière.
- * Si le browser ne supporte pas le SVG, alors utilise l'attribut title du navigateur.
+ * @description Créer un tooltip au survol de la place affichant le texte spécifié.
+ * Si le browser ne supporte pas le SVG, alors utilise le comportement par défaut pour les éléments <title>.
  * @param {external:Raphael~Element} obj - Lors du survol de obj, le tooltip s'affiche.
  * @param {string} content - Le message du tooltip.
  * @example
@@ -740,11 +740,12 @@ module.exports.dessinerHemicycle = dessinerHemicycle;
 function aper(obj, content)
 {
 	obj.attr({title: content})
+	obj.data({message: content});
 	if(Raphael.type == "SVG"){
 		obj.tooltip(obj.data("message"));
 	}
 	else{
-		obj.attr({"title": ""}).attr({"title": obj.data("message")});
+		obj.attr({title: obj.data("message")});
 	}
 }
 module.exports.aper = aper;

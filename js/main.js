@@ -397,26 +397,18 @@ window.addEventListener("load", function()
 		if (objKey.match(/^s[0-9]/))
 			internals.core.aper(svg, "place n°" + svg.data("num"));
 		else
-		{
 			internals.core.aper(svg, svg.data("nom"));
-		}
 
-		if (objKey.match(/^s[0-9]/) || objKey == "commissions" || objKey == "ministres")
-		{
 			svg.attr({cursor: "pointer"});
 
-			svg.mouseover(function()
-			{
+		svg.mouseover(function() {
 				if (objKey.match(/^s[0-9]/)) 
-				{
 					this.animate({fill: "#B53333", stroke: "#B53333"}, 300); // rouge
 					
-				}
 				this.attr({title: ''}); 
 			});
 
-			svg.mouseout(function () 
-			{
+		svg.mouseout(function () {
 				if (objKey.match(/^s[0-9]/)) // si du bon format, càd si l'élément est une place
 				{
 				this.attr({title: "place n°" + this.data("num")}); // on remet le contenu de l'élément fils <title> par soucis d'accessibilité
@@ -428,7 +420,6 @@ window.addEventListener("load", function()
 				}
 			});
 		}
-	}
 	
 
 	function jointureDataPalette()

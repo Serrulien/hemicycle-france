@@ -390,7 +390,7 @@ window.addEventListener("load", function()
 	for (const objKey in tracesHemicycle) 
 	{
 		let svg = tracesHemicycle[objKey];
-		svg.couleur = svg.attr("fill"); // svg.couleur la couleur originale
+		svg.couleur = svg.attr("fill"); // svg.couleur la couleur actuelle de l'élément
 
 		// si la clé désigne une valeur devant être un élément raphael associé à une place d'un député
 		// en effet, les clés ne respectant pas sont par exemple commissions, enceinte ..

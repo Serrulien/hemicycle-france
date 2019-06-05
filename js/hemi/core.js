@@ -988,7 +988,7 @@ function SVGtoFile(svg, options)
 	{
 		const text = title.innerText || title.textContent;
 		const parent = title.parentElement;
-		parent.id = text;
+		parent.id = text.replace(/\W/g, '_');
 	}
 
 	/*

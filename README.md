@@ -63,8 +63,5 @@ firefox docs/principale.html
 
 plus d'info dans l'objet `scripts` du fichier [package.json](./package.json).
 
-## Status
-L'outil est en développement et est donc activement maintenu.
-
 [hemicycle-france-online]: https://serrulien.github.io/hemicycle-france/principale.html
 [hemicycle-france-github]: https://github.com/Serrulien/hemicycle-france
